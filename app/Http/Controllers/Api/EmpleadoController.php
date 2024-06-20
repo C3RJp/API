@@ -77,28 +77,6 @@ class EmpleadoController extends Controller
         return response()->json($data, 200);
     }
 
-    public function destroy($id)
-    {
-        $empleado = Empleado::find($id);
-
-        if (!$empleado) {
-            $data = [
-                'message' => 'Empleado no encontrado',
-                'status' => 404
-            ];
-            return response()->json($data, 404);
-        }
-        
-        $empleado->delete();
-
-        $data = [
-            'message' => 'Empleado eliminado',
-            'status' => 200
-        ];
-
-        return response()->json($data, 200);
-    }
-
     public function update(Request $request, $id)
     {
         $empleado = Empleado::find($id);
@@ -132,4 +110,25 @@ class EmpleadoController extends Controller
 
     }
 
+    public function destroy($id)
+    {
+        $empleado = Empleado::find($id);
+
+        if (!$empleado) {
+            $data = [
+                'message' => 'Empleado no encontrado',
+                'status' => 404
+            ];
+            return response()->json($data, 404);
+        }
+        
+        $empleado->delete();
+
+        $data = [
+            'message' => 'Empleado eliminado',
+            'status' => 200
+        ];
+
+        return response()->json($data, 200);
+    }
 }
